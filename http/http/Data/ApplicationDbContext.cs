@@ -16,7 +16,7 @@ namespace http.Data
         public DbSet<Radnik> Radnik { get; set; }
         public DbSet<Restoran> Restoran { get; set; }
         public DbSet<Vlasnik> Vlasnik { get; set; }
-
+        public DbSet<AutentifikacijaToken> AutentifikacijaToken { get; set; }
 
         public ApplicationDbContext(
         DbContextOptions options) : base(options)

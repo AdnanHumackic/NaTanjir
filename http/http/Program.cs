@@ -1,4 +1,5 @@
 using http.Data;
+using http.Helper.Auth;
 using Microsoft.EntityFrameworkCore;
 
 var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", false).Build();
@@ -15,6 +16,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<MyAuthService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
