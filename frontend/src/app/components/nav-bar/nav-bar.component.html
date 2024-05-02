@@ -55,11 +55,20 @@
       </li>
 
       <hr>
-      <li>
+      <li *ngIf="!myAuth.isLogiran()">
         <a style="cursor: pointer" routerLink="/prijaviSe">
 
 
-          <i class="fa fa-sign-out" aria-hidden="true">Prijavi se</i>
+          <i class="fa fa-sign-out" aria-hidden="true" >Prijavi se</i>
+
+        </a>
+      </li>
+
+      <li *ngIf="myAuth.isLogiran()" (click)="odjaviSe()">
+        <a style="cursor: pointer" routerLink="">
+
+
+          <i class="fa fa-sign-out" aria-hidden="true" >Odjavi se</i>
 
         </a>
       </li>

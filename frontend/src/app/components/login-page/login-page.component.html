@@ -12,13 +12,15 @@
     <form>
       <div class="form-group">
         <label for="korisnickoIme">Korisničko ime</label>
-        <input type="text" class="form-control" id="korisnickoIme" aria-describedby="korisnickoIme" placeholder="Unesite korisničko ime">
+        <input type="text" class="form-control" id="korisnickoIme" aria-describedby="korisnickoIme" placeholder="Unesite korisničko ime"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="loginRequest.korisnickoIme">
       </div>
       <div class="form-group">
         <label for="lozinka">Lozinka</label>
-        <input type="password" class="form-control" id="lozinka" placeholder="Unesite lozinku">
+        <input type="password" class="form-control" id="lozinka" placeholder="Unesite lozinku"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="loginRequest.lozinka">
       </div>
-      <button type="submit" class="btn btn-success btn-block">Prijavi se</button>
+      <button type="submit" class="btn btn-success btn-block" (click)="prijaviSe()">Prijavi se</button>
     </form>
     <p class="mt-3 text-center">Nemate račun? <a href="#">Registrujte se</a></p>
   </div>
