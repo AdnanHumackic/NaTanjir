@@ -44,6 +44,17 @@
         </a>
 
       </li>
+
+      <li *ngIf="myAuth.isAdmin()">
+        <a routerLink="/adminPanel/dodavanjeVlasnikaRestorana">
+
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+
+          Admin panel
+        </a>
+
+      </li>
+
       <li>
         <a routerLink="">
 
@@ -54,12 +65,13 @@
 
       </li>
 
+
       <hr>
       <li *ngIf="!myAuth.isLogiran()">
         <a style="cursor: pointer" routerLink="/prijaviSe">
 
 
-          <i class="fa fa-sign-out" aria-hidden="true" >Prijavi se</i>
+          <i class="fa fa-sign-out" aria-hidden="true">Prijavi se</i>
 
         </a>
       </li>
@@ -68,7 +80,7 @@
         <a style="cursor: pointer" routerLink="">
 
 
-          <i class="fa fa-sign-out" aria-hidden="true" >Odjavi se</i>
+          <i class="fa fa-sign-out" aria-hidden="true">Odjavi se</i>
 
         </a>
       </li>
