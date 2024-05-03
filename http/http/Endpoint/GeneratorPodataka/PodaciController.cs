@@ -75,7 +75,7 @@ namespace http.Endpoint.GeneratorPodataka
             vlasnik.Add(new Data.Models.Vlasnik
             {
                 Is2FActive = false,
-                Ime = "Radnik",
+                Ime = "Vlasnik",
                 Prezime = "Tester",
                 KorisnickoIme = "radnik",
                 Lozinka = "test",

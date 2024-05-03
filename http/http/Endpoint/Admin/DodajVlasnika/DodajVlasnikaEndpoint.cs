@@ -20,7 +20,6 @@ namespace http.Endpoint.Admin.DodajVlasnika
         [HttpPost]
         public override async Task<NoResponse> Akcija([FromBody]DodajVlasnikaRequest request, CancellationToken cancellationToken)
         {
-
             var vlasnik = new Data.Models.Vlasnik
             {
                 ID = request.ID,
@@ -32,11 +31,8 @@ namespace http.Endpoint.Admin.DodajVlasnika
                 Email = request.Email,
                 DatumRodjenja = request.DatumRodjenja,
                 Is2FActive = false,
-                SlikaKorisnika=Config.SlikeFolder
+                SlikaKorisnika=Config.SlikeFolder,
             };
-
-           
-
 
             _applicationDbContext.Add(vlasnik);
             await _applicationDbContext.SaveChangesAsync(cancellationToken);

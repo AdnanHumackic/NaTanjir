@@ -28,8 +28,6 @@ export class DodavanjeVlasnikaComponent {
   constructor(private dodajVlasnikaEndpoint: DodajVlasnikaEndpoint) {
   }
 
-  //ne radi email i ne radi prezime
-
   dodavanjeVlasnikaForm = new FormGroup({
     ime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
     prezime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
