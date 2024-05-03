@@ -55,6 +55,16 @@
 
       </li>
 
+      <li *ngIf="myAuth.isVlasnik()">
+        <a [routerLink]="['/vlasnikPanel/upravljanjeRestoranima/'+myAuth.getAuthorizationToken()?.korisnickiNalogID]">
+
+          <i class="fa fa-cogs" aria-hidden="true"></i>
+
+          Vlasnik panel
+        </a>
+
+      </li>
+
       <li>
         <a routerLink="">
 

@@ -77,7 +77,7 @@ namespace http.Endpoint.GeneratorPodataka
                 Is2FActive = false,
                 Ime = "Vlasnik",
                 Prezime = "Tester",
-                KorisnickoIme = "radnik",
+                KorisnickoIme = "vlasnik",
                 Lozinka = "test",
                 SlikaKorisnika = null,
                 DatumRodjenja = DateTime.Now,

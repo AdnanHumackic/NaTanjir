@@ -3,7 +3,7 @@ import {KorisnickiNalog} from "./korisnickiNalog";
 export interface AutentifikacijaToken {
   id: number
   vrijednost: string
-  korisnickiNalogId: number
+  korisnickiNalogID: number
   korisnickiNalog: KorisnickiNalog
   vrijemeEvidentiranja: string
   ipAdresa: string

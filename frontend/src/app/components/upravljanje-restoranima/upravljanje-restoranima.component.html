@@ -1,0 +1,27 @@
+<app-vlasnik-panel-navbar></app-vlasnik-panel-navbar>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+  </style>
+</head>
+<body>
+
+<div class="container-fluid" style="margin-top: 15px;">
+  <div class="restaurant-container">
+    <div class="restaurant-card" *ngFor="let rest of restoran">
+      <div class="card mb-4 shadow-sm">
+        <img class="card-img-top" src="{{MojConfig.adresa_servera}}/Restoran/SlikaByID?id={{rest.id}}" >
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">{{rest.naziv}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

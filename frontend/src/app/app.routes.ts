@@ -5,6 +5,7 @@ import {AdminPanelNavBarComponent} from "./components/admin-panel-nav-bar/admin-
 import {DodavanjeVlasnikaComponent} from "./components/dodavanje-vlasnika/dodavanje-vlasnika.component";
 import {DodajRestoranEndpoint} from "./endpoints/admin-endpoints/dodaj-restoran.endpoint";
 import {DodavanjeRestoranaComponent} from "./components/dodavanje-restorana/dodavanje-restorana.component";
+import {UpravljanjeRestoranimaComponent} from "./components/upravljanje-restoranima/upravljanje-restoranima.component";
 
 
 export const routes: Routes = [
@@ -12,5 +13,6 @@ export const routes: Routes = [
   {path: 'prijaviSe', component: LoginPageComponent},
   {path: 'adminPanel/dodavanjeVlasnikaRestorana', component: DodavanjeVlasnikaComponent},
   {path: 'adminPanel/dodavanjeRestorana', component: DodavanjeRestoranaComponent},
+  {path: 'vlasnikPanel/upravljanjeRestoranima/:id', component: UpravljanjeRestoranimaComponent},
 
 ];
