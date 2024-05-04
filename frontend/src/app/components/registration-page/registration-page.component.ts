@@ -1,34 +1,34 @@
-import {Component, input} from '@angular/core';
-import {AdminPanelNavBarComponent} from "../admin-panel-nav-bar/admin-panel-nav-bar.component";
+import { Component } from '@angular/core';
+import {RouterLink} from "@angular/router";
 import {
   AbstractControl,
   FormControl,
   FormGroup,
-  isFormGroup,
   ReactiveFormsModule,
   ValidationErrors,
   Validators
 } from "@angular/forms";
-import {DodajVlasnikaEndpoint} from "../../endpoints/admin-endpoints/dodaj-vlasnika.endpoint";
+import {RegistrujSeEndpoint} from "../../endpoints/kupac-endpoints/registruj-se.endpoint";
 import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-dodavanje-vlasnika',
+  selector: 'app-registration-page',
   standalone: true,
   imports: [
-    AdminPanelNavBarComponent,
+    RouterLink,
     ReactiveFormsModule,
     NgIf
   ],
-  templateUrl: './dodavanje-vlasnika.component.html',
-  styleUrl: './dodavanje-vlasnika.component.css'
+  templateUrl: './registration-page.component.html',
+  styleUrl: './registration-page.component.css'
 })
-export class DodavanjeVlasnikaComponent {
+export class RegistrationPageComponent {
 
-  constructor(private dodajVlasnikaEndpoint: DodajVlasnikaEndpoint) {
+  constructor(private registrujSeEndpoint:RegistrujSeEndpoint) {
   }
 
-  dodavanjeVlasnikaForm = new FormGroup({
+
+  registrujSeForm=new FormGroup({
     ime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
     prezime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
     korisnickoIme: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -37,7 +37,6 @@ export class DodavanjeVlasnikaComponent {
     email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
     brojTelefona: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,}$/)])
   });
-
   datumValidator(control: AbstractControl): ValidationErrors | null {
     const inputDate = control.value;
     if (!inputDate) {
@@ -48,25 +47,24 @@ export class DodavanjeVlasnikaComponent {
 
     return razlikaGodina < 18 ? {minAge: true} : null;
   }
-
-  dodajVlasnika() {
-
+  registrujSe() {
     const formData = {
-      ime: this.dodavanjeVlasnikaForm.get('ime')?.value,
-      prezime: this.dodavanjeVlasnikaForm.get('prezime')?.value,
-      korisnickoIme: this.dodavanjeVlasnikaForm.get('korisnickoIme')?.value,
-      lozinka: this.dodavanjeVlasnikaForm.get('lozinka')?.value,
-      datumRodjenja: this.dodavanjeVlasnikaForm.get('datumRodjenja')?.value,
-      email: this.dodavanjeVlasnikaForm.get('email')?.value,
-      brojTelefona: this.dodavanjeVlasnikaForm.get('brojTelefona')?.value,
+      ime: this.registrujSeForm.get('ime')?.value,
+      prezime: this.registrujSeForm.get('prezime')?.value,
+      korisnickoIme: this.registrujSeForm.get('korisnickoIme')?.value,
+      lozinka: this.registrujSeForm.get('lozinka')?.value,
+      datumRodjenja: this.registrujSeForm.get('datumRodjenja')?.value,
+      email: this.registrujSeForm.get('email')?.value,
+      brojTelefona: this.registrujSeForm.get('brojTelefona')?.value,
     };
-    if (this.dodavanjeVlasnikaForm.valid) {
-      this.dodajVlasnikaEndpoint.akcija(formData).subscribe(x => {
+    if(this.registrujSeForm.valid){
+      this.registrujSeEndpoint.akcija(formData).subscribe(x=>{
         alert("Success");
-        this.dodavanjeVlasnikaForm.reset();
+        this.registrujSeForm.reset();
       })
-    } else {
-      alert("Error")
+    }
+    else{
+      alert("error");
     }
   }
 }

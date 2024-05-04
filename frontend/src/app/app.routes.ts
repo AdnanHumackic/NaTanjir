@@ -6,11 +6,13 @@ import {DodavanjeVlasnikaComponent} from "./components/dodavanje-vlasnika/dodava
 import {DodajRestoranEndpoint} from "./endpoints/admin-endpoints/dodaj-restoran.endpoint";
 import {DodavanjeRestoranaComponent} from "./components/dodavanje-restorana/dodavanje-restorana.component";
 import {UpravljanjeRestoranimaComponent} from "./components/upravljanje-restoranima/upravljanje-restoranima.component";
+import {RegistrationPageComponent} from "./components/registration-page/registration-page.component";
 
 
 export const routes: Routes = [
   {path: '', component: PocetnaStranicaComponent, pathMatch: 'full'},
   {path: 'prijaviSe', component: LoginPageComponent},
+  {path: 'registrujSe', component: RegistrationPageComponent},
   {path: 'adminPanel/dodavanjeVlasnikaRestorana', component: DodavanjeVlasnikaComponent},
   {path: 'adminPanel/dodavanjeRestorana', component: DodavanjeRestoranaComponent},
   {path: 'vlasnikPanel/upravljanjeRestoranima/:id', component: UpravljanjeRestoranimaComponent},

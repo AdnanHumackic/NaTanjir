@@ -26,7 +26,6 @@ namespace http.Endpoint.Admin.DodajRestoran
                 RadnoVrijemeDo = request.RadnoVrijemeDo,
                 VlasnikRestoranaID = request.VlasnikRestoranaID,
                 isObrisan = false,
-                SlikaRestorana = Config.RestoranFolder,
             };
 
             _applicationDbContext.Add(restoran);

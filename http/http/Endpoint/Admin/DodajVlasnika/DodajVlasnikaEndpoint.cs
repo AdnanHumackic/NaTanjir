@@ -31,7 +31,6 @@ namespace http.Endpoint.Admin.DodajVlasnika
                 Email = request.Email,
                 DatumRodjenja = request.DatumRodjenja,
                 Is2FActive = false,
-                SlikaKorisnika=Config.SlikeFolder,
             };
 
             _applicationDbContext.Add(vlasnik);

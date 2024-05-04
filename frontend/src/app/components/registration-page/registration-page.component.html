@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Registracija</title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="register-container">
+    <h2 class="text-center mb-4">Registracija</h2>
+    <form [formGroup]="registrujSeForm" (ngSubmit)="registrujSe()">
+      <div class="form-group">
+        <label for="ime">Ime</label>
+        <input type="text" class="form-control" id="ime" aria-describedby="ime" placeholder="Unesite ime"
+               formControlName="ime">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('ime')?.hasError('required') && registrujSeForm.get('ime')?.touched">
+                  Ime je obavezno.
+                </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('ime')?.hasError('pattern') && registrujSeForm.get('ime')?.touched">
+                  Ime mora počinjati velikim slovom.
+                </span>
+      </div>
+      <div class="form-group">
+        <label for="prezime">Prezime</label>
+        <input type="text" class="form-control" id="prezime" aria-describedby="prezime" placeholder="Unesite prezime"
+               formControlName="prezime">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('prezime')?.hasError('required') && registrujSeForm.get('prezime')?.touched">
+                  Prezime je obavezno.
+                </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('prezime')?.hasError('pattern') && registrujSeForm.get('prezime')?.touched">
+                  Prezime mora počinjati velikim slovom.
+                </span>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail adresa</label>
+        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Unesite e-mail adresu"
+               formControlName="email">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('email')?.hasError('required') && registrujSeForm.get('email')?.touched">
+                Email je obavezno polje, te mora imati ispravan format.
+              </span>
+      </div>
+      <div class="form-group">
+        <label for="korisnickoIme">Korisničko ime</label>
+        <input type="text" class="form-control" id="korisnickoIme" aria-describedby="korisnickoIme"
+               placeholder="Unesite korisničko ime" formControlName="korisnickoIme">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('korisnickoIme')?.hasError('required') && registrujSeForm.get('korisnickoIme')?.touched">
+                Korisničko ime je obavezno.
+              </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('korisnickoIme')?.hasError('minlength') && registrujSeForm.get('korisnickoIme')?.touched">
+                Korisničko ime mora sadržavati minimalno 5 karaktera.
+              </span>
+      </div>
+      <div class="form-group">
+        <label for="lozinka">Lozinka</label>
+        <input type="password" class="form-control" id="lozinka" placeholder="Unesite lozinku"
+               formControlName="lozinka">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('lozinka')?.hasError('required') && registrujSeForm.get('lozinka')?.touched">
+                Lozinka je obavezna.
+              </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('lozinka')?.errors?.['minlength'] && registrujSeForm.get('lozinka')?.touched">
+                   Lozinka mora sadržavati najmanje 10 karaktera.
+                </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('lozinka')?.errors?.['pattern'] && registrujSeForm.get('lozinka')?.touched">
+                 Lozinka mora sadržavati barem jedno veliko slovo, barem jedan specijalni znak i barem jedan broj.
+                </span>
+      </div>
+      <div class="form-group">
+        <label for="brojTelefona">Broj telefona</label>
+        <input type="text" class="form-control" id="brojTelefona" placeholder="Unesite broj telefona"
+               formControlName="brojTelefona">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('brojTelefona')?.hasError('required') && registrujSeForm.get('brojTelefona')?.touched">
+                  Broj telefona je obavezan.
+                </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('brojTelefona')?.hasError('pattern') && registrujSeForm.get('brojTelefona')?.touched">
+                  Broj telefona mora sadržavati minimalno 9 cifara.
+                </span>
+      </div>
+      <div class="form-group">
+        <label for="datumRodjenja">Datum rođenja</label>
+        <input type="date" class="form-control" id="datumRodjenja" placeholder="Unesite datum rođenja"
+               formControlName="datumRodjenja">
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('datumRodjenja')?.hasError('required') && registrujSeForm.get('datumRodjenja')?.touched">
+                  Datum rođenja je obavezan.
+                </span>
+        <span class="text-danger"
+              *ngIf="registrujSeForm.get('datumRodjenja')?.errors?.['minAge'] && registrujSeForm.get('datumRodjenja')?.touched">
+                  Osoba mora biti starija od 18 godina.
+                </span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Registriraj se</button>
+    </form>
+    <p class="mt-3 text-center">Već imate račun? <a routerLink="/prijaviSe">Prijavite se</a></p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -34,7 +34,6 @@ export class UpravljanjeRestoranimaComponent implements OnInit{
   fetchRestorani(){
     this.getRestoranByIDVlasnikEndpoint.akcija(this.vlasnikId).subscribe(x=>{
       this.restoran=x.restoran;
-      console.log(this.restoran);
     })
   }
 

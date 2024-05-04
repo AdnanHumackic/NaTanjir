@@ -30,6 +30,14 @@
                     *ngIf="dodavanjeVlasnikaForm.get('lozinka')?.hasError('required') && dodavanjeVlasnikaForm.get('lozinka')?.touched">
                 Lozinka je obavezna.
               </span>
+              <span class="text-danger"
+                    *ngIf="dodavanjeVlasnikaForm.get('lozinka')?.errors?.['minlength'] && dodavanjeVlasnikaForm.get('lozinka')?.touched">
+                   Lozinka mora sadržavati najmanje 10 karaktera.
+                </span>
+              <span class="text-danger"
+                    *ngIf="dodavanjeVlasnikaForm.get('lozinka')?.errors?.['pattern'] && dodavanjeVlasnikaForm.get('lozinka')?.touched">
+                 Lozinka mora sadržavati barem jedno veliko slovo, barem jedan specijalni znak i barem jedan broj.
+                </span>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-6">

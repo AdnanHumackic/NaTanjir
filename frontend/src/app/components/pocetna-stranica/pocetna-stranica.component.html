@@ -10,7 +10,7 @@
   <h1>Dobrodošli NaTanjir</h1>
   <p>Ovde možete pronaći najbolje restorane i naručiti hranu iz udobnosti svog doma.</p>
   <a routerLink="/prijaviSe" class="btn btn-success btn-lg mr-2" *ngIf="!myAuth.isLogiran()">Prijavi se</a>
-  <a href="#" class="btn btn-outline-success btn-lg" *ngIf="!myAuth.isLogiran()">Registruj se</a>
+  <a routerLink="/registrujSe" class="btn btn-outline-success btn-lg" *ngIf="!myAuth.isLogiran()">Registruj se</a>
 </div>
 
 </body>

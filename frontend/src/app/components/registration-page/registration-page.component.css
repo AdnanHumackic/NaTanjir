@@ -1,14 +1,16 @@
-.login-container {
+.register-container {
   max-width: 400px;
-  margin: 100px auto;
+  margin: auto;
   padding: 20px;
-  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 .jumbotron {
   background-size: cover;
   background-position: center;
   height: 100vh;
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),  url('https://www.mowglistreetfood.com/wp-content/uploads/2023/01/Landing_image_Desktop.jpg');
+  overflow-y: auto;
 }
+
