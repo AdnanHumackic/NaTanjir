@@ -7,13 +7,15 @@ import {
 import {ActivatedRoute} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import {MojConfig} from "../../moj-config";
+import {DodavanjeRadnikaComponent} from "../dodavanje-radnika/dodavanje-radnika.component";
 
 @Component({
   selector: 'app-upravljanje-restoranima',
   standalone: true,
   imports: [
     VlasnikPanelNavbarComponent,
-    NgForOf
+    NgForOf,
+    DodavanjeRadnikaComponent
   ],
   templateUrl: './upravljanje-restoranima.component.html',
   styleUrl: './upravljanje-restoranima.component.css'
@@ -22,6 +24,7 @@ export class UpravljanjeRestoranimaComponent implements OnInit{
 
   vlasnikId:any;
   restoran:RestoranGetByIDVlasnikRestoran[]=[];
+  odabraniRestoran:any=null;
   constructor(private getRestoranByIDVlasnikEndpoint:GetRestoranByIdVlasnikaEndpoint, private activatedRoute:ActivatedRoute) {
   }
 
@@ -38,4 +41,8 @@ export class UpravljanjeRestoranimaComponent implements OnInit{
   }
 
   protected readonly MojConfig = MojConfig;
+
+  dodajRadnika(id: number, naziv: string) {
+    this.odabraniRestoran={id,naziv};
+  }
 }

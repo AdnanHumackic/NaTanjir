@@ -1,0 +1,131 @@
+<div
+  class="modal fade show"
+  id="exampleModalLive"
+  tabindex="-1"
+  aria-labelledby="exampleModalLiveLabel"
+  aria-modal="true"
+  role="dialog"
+  style="display: block;"
+  *ngIf="dodajRadnika!=null"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Dodavanje radnika u restoranu: {{dodajRadnika.naziv}}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="zatvoriDodavanjeRadnika()"></button>
+      </div>
+      <div class="modal-body" *ngIf="dodajRadnika">
+          <form [formGroup]="dodajRadnikaForm" (ngSubmit)="dodavanjeRadnika()">
+            <div class="mb-3">
+              <label class="small mb-1" for="korisnickoIme">Korisničko ime: </label>
+              <input class="form-control" id="korisnickoIme" type="text" placeholder="Unesite korisničko ime"
+                     formControlName="korisnickoIme">
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('korisnickoIme')?.hasError('required') && dodajRadnikaForm.get('korisnickoIme')?.touched">
+                Korisničko ime je obavezno.
+              </span>
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('korisnickoIme')?.hasError('minlength') && dodajRadnikaForm.get('korisnickoIme')?.touched">
+                Korisničko ime mora sadržavati minimalno 5 karaktera.
+              </span>
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1" for="lozinka">Lozinka: </label>
+              <input class="form-control" id="lozinka" type="password" placeholder="Unesite lozinku"
+                     formControlName="lozinka">
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('lozinka')?.hasError('required') && dodajRadnikaForm.get('lozinka')?.touched">
+                Lozinka je obavezna.
+              </span>
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('lozinka')?.errors?.['minlength'] && dodajRadnikaForm.get('lozinka')?.touched">
+                   Lozinka mora sadržavati najmanje 10 karaktera.
+                </span>
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('lozinka')?.errors?.['pattern'] && dodajRadnikaForm.get('lozinka')?.touched">
+                 Lozinka mora sadržavati barem jedno veliko slovo, barem jedan specijalni znak i barem jedan broj.
+                </span>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-6">
+                <label class="small mb-1" for="ime">Ime</label>
+                <input class="form-control" id="ime" type="text" placeholder="Unesite ime"
+                       formControlName="ime">
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('ime')?.hasError('required') && dodajRadnikaForm.get('ime')?.touched">
+                  Ime je obavezno.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('ime')?.hasError('pattern') && dodajRadnikaForm.get('ime')?.touched">
+                  Ime mora počinjati velikim slovom.
+                </span>
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="prezime">Prezime</label>
+                <input class="form-control" id="prezime" type="text" placeholder="Unesite prezime"
+                       formControlName="prezime">
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('prezime')?.hasError('required') && dodajRadnikaForm.get('prezime')?.touched">
+                  Prezime je obavezno.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('prezime')?.hasError('pattern') && dodajRadnikaForm.get('prezime')?.touched">
+                  Prezime mora počinjati velikim slovom.
+                </span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1" for="email">Email</label>
+              <input class="form-control" id="email" type="email" placeholder="Unesite email adresu"
+                     formControlName="email">
+              <span class="text-danger"
+                    *ngIf="dodajRadnikaForm.get('email')?.hasError('required') && dodajRadnikaForm.get('email')?.touched">
+                Email je obavezno polje, te mora imati ispravan format.
+              </span>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-6">
+                <label class="small mb-1" for="brojtelefona">Broj telefona</label>
+                <input class="form-control" id="brojtelefona" type="text" placeholder="Unesite broj telefona"
+                       formControlName="brojTelefona">
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('brojTelefona')?.hasError('required') && dodajRadnikaForm.get('brojTelefona')?.touched">
+                  Broj telefona je obavezan.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('brojTelefona')?.hasError('pattern') && dodajRadnikaForm.get('brojTelefona')?.touched">
+                  Broj telefona mora sadržavati minimalno 9 cifara.
+                </span>
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="datumRodjenja">Datum rođenja:</label>
+                <input class="form-control" id="datumRodjenja" type="date" formControlName="datumRodjenja">
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('datumRodjenja')?.hasError('required') && dodajRadnikaForm.get('datumRodjenja')?.touched">
+                  Datum rođenja je obavezan.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('datumRodjenja')?.errors?.['minAge'] && dodajRadnikaForm.get('datumRodjenja')?.touched">
+                  Osoba mora biti starija od 18 godina.
+                </span>
+              </div>
+
+              <div class="col-md-6">
+                <label class="small mb-1" for="datumZaposlenja">Datum zaposlenja:</label>
+                <input class="form-control" id="datumZaposlenja" type="date" formControlName="datumZaposlenja">
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('datumZaposlenja')?.hasError('required') && dodajRadnikaForm.get('datumZaposlenja')?.touched">
+                  Datum zaposlenja je obavezan.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodajRadnikaForm.get('datumZaposlenja')?.errors?.['futureDate'] && dodajRadnikaForm.get('datumZaposlenja')?.touched">
+                  Datum zaposlenja ne može biti stariji od današnjeg datuma.
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-success" type="submit" style="float:right;">Dodaj radnika</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

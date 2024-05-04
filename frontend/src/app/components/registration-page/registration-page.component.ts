@@ -33,6 +33,7 @@ export class RegistrationPageComponent {
     prezime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
     korisnickoIme: new FormControl('', [Validators.required, Validators.minLength(5)]),
     lozinka: new FormControl('', [Validators.required, Validators.minLength(10),   Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_]).{10,}$/)]),
+
     datumRodjenja: new FormControl('', [Validators.required, this.datumValidator]),
     email: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
     brojTelefona: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,}$/)])

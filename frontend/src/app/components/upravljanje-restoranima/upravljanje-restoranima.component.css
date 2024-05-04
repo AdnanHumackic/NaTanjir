@@ -14,3 +14,10 @@
   max-height: 130px;
   object-fit: cover;
 }
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+}
+.btn-group button {
+  margin: 0 5px;
+}
