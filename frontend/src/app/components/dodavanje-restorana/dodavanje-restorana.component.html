@@ -8,55 +8,78 @@
         <div class="card-body">
           <form [formGroup]="dodavanjeRestoranaForm" (ngSubmit)="dodajRestoran()">
             <div class="mb-3">
-              <label class="small mb-1" for="naziv">Naziv restorana:</label>
+              <label class="small mb-1" for="naziv">Naziv restorana</label>
               <input class="form-control" id="naziv" type="text" placeholder="Unesite naziv restorana"
-              formControlName="naziv">
-              <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('naziv')?.hasError('required') && dodavanjeRestoranaForm.get('naziv')?.touched">
+                     formControlName="naziv">
+              <span class="text-danger"
+                    *ngIf="dodavanjeRestoranaForm.get('naziv')?.hasError('required') && dodavanjeRestoranaForm.get('naziv')?.touched">
                 Naziv je obavezno polje.
               </span>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-6">
-                <label class="small mb-1" for="radnoVrijemeOd">Radno vrijeme od:</label>
+                <label class="small mb-1" for="radnoVrijemeOd">Radno vrijeme od</label>
                 <input class="form-control" id="radnoVrijemeOd" type="text"
                        placeholder="Unesite početak radnog vremena" formControlName="radnoVrijemeOd">
-                <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeOd')?.hasError('required') && dodavanjeRestoranaForm.get('radnoVrijemeOd')?.touched">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeOd')?.hasError('required') && dodavanjeRestoranaForm.get('radnoVrijemeOd')?.touched">
                   Radno vrijeme od je obavezno polje.
                 </span>
-                <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeOd')?.hasError('pattern') && dodavanjeRestoranaForm.get('radnoVrijemeOd')?.touched">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeOd')?.hasError('pattern') && dodavanjeRestoranaForm.get('radnoVrijemeOd')?.touched">
                   Radno vrijeme od treba biti u formatu sati:minute (npr. 07:00).
                 </span>
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="radnoVrijemeDo">Radno vrijeme do:</label>
+                <label class="small mb-1" for="radnoVrijemeDo">Radno vrijeme do</label>
                 <input class="form-control" id="radnoVrijemeDo" type="text" placeholder="Unesite kraj radnog vremena"
-                formControlName="radnoVrijemeDo">
-                <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeDo')?.hasError('required') && dodavanjeRestoranaForm.get('radnoVrijemeDo')?.touched">
+                       formControlName="radnoVrijemeDo">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeDo')?.hasError('required') && dodavanjeRestoranaForm.get('radnoVrijemeDo')?.touched">
                   Radno vrijeme do je obavezno polje.
                 </span>
-                <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeDo')?.hasError('pattern') && dodavanjeRestoranaForm.get('radnoVrijemeDo')?.touched">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('radnoVrijemeDo')?.hasError('pattern') && dodavanjeRestoranaForm.get('radnoVrijemeDo')?.touched">
                   Radno vrijeme do treba biti u formatu sati:minute (npr. 21:00).
                 </span>
               </div>
 
             </div>
             <div class="mb-3">
-              <label class="small mb-1" for="opis">Opis restorana:</label>
-              <textarea class="form-control" id="opis" type="text" placeholder="Unesite opis restorana" formControlName="opis"></textarea>
-              <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('opis')?.hasError('required') && dodavanjeRestoranaForm.get('opis')?.touched">
+              <label class="small mb-1" for="opis">Opis restorana</label>
+              <textarea class="form-control" id="opis" type="text" placeholder="Unesite opis restorana"
+                        formControlName="opis"></textarea>
+              <span class="text-danger"
+                    *ngIf="dodavanjeRestoranaForm.get('opis')?.hasError('required') && dodavanjeRestoranaForm.get('opis')?.touched">
                 Opis je obavezno polje.
               </span>
             </div>
             <div class="row gx-3 mb-3">
               <div class="col-md-6">
-                <label class="small mb-1" for="vlasnikRestoranaID">Vlasnik restorana:</label>
-                <select id="vlasnikRestoranaID" class="form-control" name="vlasnikRestoranaID" formControlName="vlasnikRestoranaID">
+                <label class="small mb-1" for="vlasnikRestoranaID">Vlasnik restorana</label>
+                <select id="vlasnikRestoranaID" class="form-control" name="vlasnikRestoranaID"
+                        formControlName="vlasnikRestoranaID">
                   <option [value]="vl.id" *ngFor="let vl of vlasnik">
                     {{vl.imePrezime}}
                   </option>
                 </select>
-                <span class="text-danger" *ngIf="dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.hasError('required') && dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.touched">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.hasError('required') && dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.touched">
                   Odabir vlasnika restorana je obavezan.
+                </span>
+              </div>
+
+              <div class="col-md-6">
+                <label class="small mb-1" for="lokacija">Lokacija restorana</label>
+                <input class="form-control" id="lokacija" type="text" placeholder="Unesite lokaciju restorana"
+                       formControlName="lokacija">
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('lokacija')?.hasError('required') && dodavanjeRestoranaForm.get('lokacija')?.touched">
+                  Lokacija je obavezna.
+                </span>
+                <span class="text-danger"
+                      *ngIf="dodavanjeRestoranaForm.get('lokacija')?.hasError('pattern') && dodavanjeRestoranaForm.get('lokacija')?.touched">
+                  Lokacija mora počinjati velikim slovom.
                 </span>
               </div>
             </div>

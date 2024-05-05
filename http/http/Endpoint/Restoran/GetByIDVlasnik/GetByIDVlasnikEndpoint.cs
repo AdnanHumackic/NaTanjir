@@ -27,6 +27,7 @@ namespace http.Endpoint.Restoran.GetByIDVlasnik
                     Opis=x.Opis,
                     RadnoVrijemeOd=x.RadnoVrijemeOd,
                     RadnoVrijemeDo=x.RadnoVrijemeDo,
+                    Lokacija=x.Lokacija
                 }).ToListAsync();
 
             return new GetByIDVlasnikResponse

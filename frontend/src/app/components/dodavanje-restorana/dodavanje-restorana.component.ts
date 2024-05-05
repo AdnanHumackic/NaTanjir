@@ -28,6 +28,7 @@ export class DodavanjeRestoranaComponent implements OnInit{
     radnoVrijemeDo:new FormControl('', [Validators.required, Validators.pattern(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/)]),
     opis:new FormControl('', Validators.required),
     vlasnikRestoranaID:new FormControl('', Validators.required),
+    lokacija: new FormControl('', [Validators.required, Validators.pattern(/^([A-Za-z]+\s*)+$/)]),
   });
 
   ngOnInit(): void {
@@ -48,7 +49,8 @@ export class DodavanjeRestoranaComponent implements OnInit{
       radnoVrijemeOd:this.dodavanjeRestoranaForm.get('radnoVrijemeOd')?.value,
       radnoVrijemeDo:this.dodavanjeRestoranaForm.get('radnoVrijemeDo')?.value,
       opis:this.dodavanjeRestoranaForm.get('opis')?.value,
-      vlasnikRestoranaID:this.dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.value
+      vlasnikRestoranaID:this.dodavanjeRestoranaForm.get('vlasnikRestoranaID')?.value,
+      lokacija:this.dodavanjeRestoranaForm.get('lokacija')?.value
     };
     if(this.dodavanjeRestoranaForm.valid){
       this.dodajRestoranEndpoint.akcija(formData).subscribe(x=>{

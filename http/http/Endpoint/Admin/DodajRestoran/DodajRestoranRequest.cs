@@ -11,5 +11,6 @@ namespace http.Endpoint.Admin.DodajRestoran
         public string RadnoVrijemeDo { get; set; }
         public string Opis { get; set; }
         public int VlasnikRestoranaID { get; set; }
+        public string Lokacija { get; set; }
     }
 }

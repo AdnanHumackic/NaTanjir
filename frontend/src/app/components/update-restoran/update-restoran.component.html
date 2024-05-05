@@ -1,0 +1,94 @@
+<div
+  class="modal fade show"
+  id="exampleModalLive"
+  tabindex="-1"
+  aria-labelledby="exampleModalLiveLabel"
+  aria-modal="true"
+  role="dialog"
+  style="display: block;"
+  *ngIf="updateRestoran!=null"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Ažuriranje podataka za: {{updateRestoran.naziv}}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="zatvoriUpdate()"></button>
+      </div>
+      <div class="modal-body" *ngIf="updateRestoran">
+        <form [formGroup]="updateRestoranForm" (ngSubmit)="restoranUpdate()">
+          <div class="mb-3">
+            <label class="small mb-1" for="naziv">Naziv restorana</label>
+            <input class="form-control" id="naziv" type="text" placeholder="Unesite naziv restorana"
+                   formControlName="naziv" >
+            <span class="text-danger"
+                  *ngIf="updateRestoranForm.get('naziv')?.hasError('required') && updateRestoranForm.get('naziv')?.touched">
+                Naziv je obavezno polje.
+              </span>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-md-6">
+              <label class="small mb-1" for="radnoVrijemeOd">Radno vrijeme od</label>
+              <input class="form-control" id="radnoVrijemeOd" type="text"
+                     placeholder="Unesite početak radnog vremena" formControlName="radnoVrijemeOd">
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('radnoVrijemeOd')?.hasError('required') && updateRestoranForm.get('radnoVrijemeOd')?.touched">
+                  Radno vrijeme od je obavezno polje.
+                </span>
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('radnoVrijemeOd')?.hasError('pattern') && updateRestoranForm.get('radnoVrijemeOd')?.touched">
+                  Radno vrijeme od treba biti u formatu sati:minute (npr. 07:00).
+                </span>
+            </div>
+            <div class="col-md-6">
+              <label class="small mb-1" for="radnoVrijemeDo">Radno vrijeme do</label>
+              <input class="form-control" id="radnoVrijemeDo" type="text" placeholder="Unesite kraj radnog vremena"
+                     formControlName="radnoVrijemeDo">
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('radnoVrijemeDo')?.hasError('required') && updateRestoranForm.get('radnoVrijemeDo')?.touched">
+                  Radno vrijeme do je obavezno polje.
+                </span>
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('radnoVrijemeDo')?.hasError('pattern') && updateRestoranForm.get('radnoVrijemeDo')?.touched">
+                  Radno vrijeme do treba biti u formatu sati:minute (npr. 21:00).
+                </span>
+            </div>
+
+          </div>
+          <div class="mb-3">
+            <label class="small mb-1" for="opis">Opis restorana</label>
+            <textarea class="form-control" id="opis" type="text" placeholder="Unesite opis restorana"
+                      formControlName="opis"></textarea>
+            <span class="text-danger"
+                  *ngIf="updateRestoranForm.get('opis')?.hasError('required') && updateRestoranForm.get('opis')?.touched">
+                Opis je obavezno polje.
+              </span>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-md-6">
+              <label class="small mb-1" for="lokacija">Lokacija restorana</label>
+              <input class="form-control" id="lokacija" type="text" placeholder="Unesite lokaciju restorana"
+                     formControlName="lokacija">
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('lokacija')?.hasError('required') && updateRestoranForm.get('lokacija')?.touched">
+                  Lokacija je obavezna.
+                </span>
+              <span class="text-danger"
+                    *ngIf="updateRestoranForm.get('lokacija')?.hasError('pattern') && updateRestoranForm.get('lokacija')?.touched">
+                  Lokacija mora počinjati velikim slovom.
+                </span>
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-md-6">
+
+            <label class="small mb-1" for="slikaRestorana">Nova slika:</label>
+            <input id="slikaRestorana" type="file" accept="image/*" class="form-control"
+                   formControlName="slikaRestorana" (change)="generisiPreview()" >
+            </div>
+          </div>
+          <button class="btn btn-success" style="float:right;" type="submit">Uredi restoran</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

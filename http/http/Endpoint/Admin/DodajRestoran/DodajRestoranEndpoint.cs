@@ -26,6 +26,7 @@ namespace http.Endpoint.Admin.DodajRestoran
                 RadnoVrijemeDo = request.RadnoVrijemeDo,
                 VlasnikRestoranaID = request.VlasnikRestoranaID,
                 isObrisan = false,
+                Lokacija=request.Lokacija,
             };
 
             _applicationDbContext.Add(restoran);

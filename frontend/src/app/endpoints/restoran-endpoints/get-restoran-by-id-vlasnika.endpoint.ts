@@ -8,28 +8,29 @@ import {MojConfig} from "../../moj-config";
 
 export class GetRestoranByIdVlasnikaEndpoint implements MyBaseEndpoint<number, RestoranGetByIDVlasnik> {
 
-    constructor(public httpClient:HttpClient) {
+  constructor(public httpClient: HttpClient) {
 
-    }
+  }
 
 
-    akcija(request: number): Observable<RestoranGetByIDVlasnik> {
-        let url=MojConfig.adresa_servera+`/Restoran-GetByIDVlasnik?ID=${request}`;
+  akcija(request: number): Observable<RestoranGetByIDVlasnik> {
+    let url = MojConfig.adresa_servera + `/Restoran-GetByIDVlasnik?ID=${request}`;
 
-        return this.httpClient.get<RestoranGetByIDVlasnik>(url);
-    }
+    return this.httpClient.get<RestoranGetByIDVlasnik>(url);
+  }
 
 }
 
 export interface RestoranGetByIDVlasnik {
-    restoran: RestoranGetByIDVlasnikRestoran[]
+  restoran: RestoranGetByIDVlasnikRestoran[]
 }
 
 export interface RestoranGetByIDVlasnikRestoran {
-    id: number
-    naziv: string
-    radnoVrijemeOd: string
-    radnoVrijemeDo: string
-    opis: string
-    slikaRestorana: string
+  id: number
+  naziv: string
+  radnoVrijemeOd: string
+  radnoVrijemeDo: string
+  opis: string
+  slikaRestorana: string
+  lokacija: string
 }

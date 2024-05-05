@@ -5,7 +5,7 @@ namespace http.Endpoint.Restoran.GetSlika
 {
     [ApiController]
     [Route("Restoran")]
-    public class GetSlikaEndpoing:ControllerBase
+    public class GetSlikaEndpoint:ControllerBase
     {
         [HttpGet("SlikaByID")]
         public async Task<FileContentResult> GetByID(int id, CancellationToken cancellationToken)

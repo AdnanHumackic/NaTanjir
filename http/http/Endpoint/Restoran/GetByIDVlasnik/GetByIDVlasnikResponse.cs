@@ -14,5 +14,6 @@ namespace http.Endpoint.Restoran.GetByIDVlasnik
         public string RadnoVrijemeOd { get; set; }
         public string RadnoVrijemeDo { get; set; }
         public string Opis { get; set; }
+        public string Lokacija { get; set; }
     }
 }

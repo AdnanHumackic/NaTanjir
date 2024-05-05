@@ -17,7 +17,7 @@
       <div class="modal-body" *ngIf="dodajRadnika">
           <form [formGroup]="dodajRadnikaForm" (ngSubmit)="dodavanjeRadnika()">
             <div class="mb-3">
-              <label class="small mb-1" for="korisnickoIme">Korisničko ime: </label>
+              <label class="small mb-1" for="korisnickoIme">Korisničko ime </label>
               <input class="form-control" id="korisnickoIme" type="text" placeholder="Unesite korisničko ime"
                      formControlName="korisnickoIme">
               <span class="text-danger"
@@ -30,7 +30,7 @@
               </span>
             </div>
             <div class="mb-3">
-              <label class="small mb-1" for="lozinka">Lozinka: </label>
+              <label class="small mb-1" for="lozinka">Lozinka </label>
               <input class="form-control" id="lozinka" type="password" placeholder="Unesite lozinku"
                      formControlName="lozinka">
               <span class="text-danger"
@@ -98,7 +98,7 @@
                 </span>
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="datumRodjenja">Datum rođenja:</label>
+                <label class="small mb-1" for="datumRodjenja">Datum rođenja</label>
                 <input class="form-control" id="datumRodjenja" type="date" formControlName="datumRodjenja">
                 <span class="text-danger"
                       *ngIf="dodajRadnikaForm.get('datumRodjenja')?.hasError('required') && dodajRadnikaForm.get('datumRodjenja')?.touched">
@@ -111,7 +111,7 @@
               </div>
 
               <div class="col-md-6">
-                <label class="small mb-1" for="datumZaposlenja">Datum zaposlenja:</label>
+                <label class="small mb-1" for="datumZaposlenja">Datum zaposlenja</label>
                 <input class="form-control" id="datumZaposlenja" type="date" formControlName="datumZaposlenja">
                 <span class="text-danger"
                       *ngIf="dodajRadnikaForm.get('datumZaposlenja')?.hasError('required') && dodajRadnikaForm.get('datumZaposlenja')?.touched">
