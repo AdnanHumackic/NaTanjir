@@ -83,7 +83,7 @@
 
             <label class="small mb-1" for="slikaRestorana">Nova slika:</label>
             <input id="slikaRestorana" type="file" accept="image/*" class="form-control"
-                   formControlName="slikaRestorana" (change)="generisiPreview()" >
+                   formControlName="slikaRestorana" (change)="imageService.generatePreview('slikaRestorana', updateRestoranForm)" >
             </div>
           </div>
           <button class="btn btn-success" style="float:right;" type="submit">Uredi restoran</button>

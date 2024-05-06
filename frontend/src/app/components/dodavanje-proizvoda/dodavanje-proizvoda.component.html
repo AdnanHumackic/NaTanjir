@@ -1,0 +1,114 @@
+<div
+  class="modal fade show"
+  id="exampleModalLive"
+  tabindex="-1"
+  aria-labelledby="exampleModalLiveLabel"
+  aria-modal="true"
+  role="dialog"
+  style="display: block;"
+  *ngIf="dodajProizvod!=null"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Dodavanje proizvoda u
+          restoranu: {{dodajProizvod.naziv}} </h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="zatvoriDodavanje()"></button>
+      </div>
+      <div class="modal-body" *ngIf="dodajProizvod">
+        <form [formGroup]="dodajProizvodForm" (ngSubmit)="dodavanjeProizvoda()">
+          <div class="mb-3">
+            <label class="small mb-1" for="nazivProizvoda">Naziv proizvoda</label>
+            <input class="form-control" id="nazivProizvoda" type="text" placeholder="Unesite naziv proizvoda"
+                   formControlName="nazivProizvoda">
+            <span class="text-danger"
+                  *ngIf="dodajProizvodForm.get('nazivProizvoda')?.hasError('required') && dodajProizvodForm.get('nazivProizvoda')?.touched">
+                Naziv proizvoda je obavezan.
+              </span>
+            <span class="text-danger"
+                  *ngIf="dodajProizvodForm.get('nazivProizvoda')?.hasError('pattern') && dodajProizvodForm.get('nazivProizvoda')?.touched">
+                Naziv mora počinjati velikim slovom.
+              </span>
+          </div>
+          <div class="mb-3">
+            <label class="small mb-1" for="sastojci">Sastojci proizvoda</label>
+            <textarea class="form-control" id="sastojci" type="text" placeholder="Unesite sastojke proizvoda"
+                      formControlName="sastojci"></textarea>
+            <span class="text-danger"
+                  *ngIf="dodajProizvodForm.get('sastojci')?.hasError('required') && dodajProizvodForm.get('sastojci')?.touched">
+                Sastojci proizvoda su obavezni.
+              </span>
+          </div>
+          <div class="row gx-3 mb-3">
+            <div class="col-md-6">
+              <label class="small mb-1" for="vrijemePripreme">Vrijeme pripreme (u minutama)</label>
+              <input class="form-control" id="vrijemePripreme" type="text" placeholder="Unesite vrijeme pripreme"
+                     formControlName="vrijemePripreme">
+              <span class="text-danger"
+                    *ngIf="dodajProizvodForm.get('vrijemePripreme')?.hasError('required') && dodajProizvodForm.get('vrijemePripreme')?.touched">
+                Vrijeme pripreme proizvoda je obavezno.
+              </span>
+              <span class="text-danger"
+                    *ngIf="dodajProizvodForm.get('vrijemePripreme')?.hasError('pattern') && dodajProizvodForm.get('vrijemePripreme')?.touched">
+                Vrijeme pripreme mora biti prikazano brojevima.
+              </span>
+            </div>
+            <div class="col-md-6">
+              <label class="small mb-1" for="cijenaProizvoda">Cijena proizvoda</label>
+              <input class="form-control" id="cijenaProizvoda" type="text" placeholder="Primjer: 15,50"
+                     formControlName="cijenaProizvoda">
+              <span class="text-danger"
+                    *ngIf="dodajProizvodForm.get('cijenaProizvoda')?.hasError('required') && dodajProizvodForm.get('cijenaProizvoda')?.touched">
+                Cijena proizvoda je obavezna.
+              </span>
+              <span class="text-danger"
+                    *ngIf="dodajProizvodForm.get('cijenaProizvoda')?.hasError('pattern') && dodajProizvodForm.get('cijenaProizvoda')?.touched">
+                Cijena proizvoda može biti u formatu: 15.50, 15,50 ili 15.
+              </span>
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+
+
+            <div class="col-md-6">
+              <label class="small mb-1" for="kategorijaID">Kategorija hrane</label>
+              <select id="kategorijaID" class="form-control" name="kategorijaID"
+                      formControlName="kategorijaID">
+                <option [value]="kat.id" *ngFor="let kat of kategorija">
+                  {{kat.naziv}}
+                </option>
+              </select>
+              <span class="text-danger"
+                    *ngIf="dodajProizvodForm.get('kategorijaID')?.hasError('required') && dodajProizvodForm.get('kategorijaID')?.touched">
+                Kategorija proizvoda je obavezna.
+              </span>
+            </div>
+
+            <div class="col-md-6">
+
+              <label class="small mb-1" for="slikaProizvoda">Slika proizvoda:</label>
+              <input id="slikaProizvoda" type="file" accept="image/*" class="form-control"
+                     formControlName="slikaProizvoda"
+                     (change)="imageService.generatePreview('slikaProizvoda', dodajProizvodForm)">
+            </div>
+          </div>
+          <div class="row gx-3 mb-3">
+
+            <div class="col-md-6">
+              <label class="small mb-1">U ponudi</label><br>
+              <input type="radio" id="da" name="isUPonudi" [value]="true" formControlName="isUPonudi">
+              <label for="da">Da</label><br>
+              <input type="radio" id="ne" name="isUPonudi" [value]="false" formControlName="isUPonudi">
+              <label for="ne">Ne</label><br>
+            </div>
+            <span class="text-danger"
+                  *ngIf="dodajProizvodForm.get('isUPonudi')?.hasError('required') && dodajProizvodForm.get('isUPonudi')?.touched">
+                Molimo odaberite da li je proizvod u ponudi.
+              </span>
+          </div>
+          <button class="btn btn-success" type="submit" style="float:right;">Dodaj proizvod</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {UpdateRestoranEndpoint} from "../../endpoints/vlasnik-endpoints/update-restoran.endpoint";
+import {ImageService} from "../../services/image-service";
 
 @Component({
   selector: 'app-update-restoran',
@@ -21,7 +22,7 @@ export class UpdateRestoranComponent implements OnChanges {
   @Output() zatvaranjeModala: EventEmitter<void> = new EventEmitter();
 
 
-  constructor(private updateRestoranEndpoint: UpdateRestoranEndpoint) {
+  constructor(private updateRestoranEndpoint: UpdateRestoranEndpoint, public imageService:ImageService) {
   }
 
   updateRestoranForm = new FormGroup({
@@ -35,7 +36,6 @@ export class UpdateRestoranComponent implements OnChanges {
   });
 
 
-  //try to change approach
   ngOnChanges() {
     if (this.updateRestoran) {
       this.updateRestoranForm.setValue({
@@ -64,7 +64,7 @@ export class UpdateRestoranComponent implements OnChanges {
       radnoVrijemeOd: this.updateRestoranForm.get('radnoVrijemeOd')?.value,
       radnoVrijemeDo: this.updateRestoranForm.get('radnoVrijemeDo')?.value,
       opis: this.updateRestoranForm.get('opis')?.value,
-      slikaRestorana: this.vrijednost,
+      slikaRestorana: this.imageService.vrijednost,
       lokacija: this.updateRestoranForm.get('lokacija')?.value,
     }
     if (this.updateRestoranForm.valid) {
@@ -77,20 +77,4 @@ export class UpdateRestoranComponent implements OnChanges {
 
   }
 
-
-  //move this to helper
-  vrijednost!: any;
-
-  generisiPreview() {
-
-    // @ts-ignore
-    var file = document.getElementById("slikaRestorana").files[0];
-    if (file && this.updateRestoranForm) {
-      var reader = new FileReader();
-      reader.onload = () => {
-        this.vrijednost = reader.result?.toString();
-      };
-      reader.readAsDataURL(file);
-    }
-  }
 }

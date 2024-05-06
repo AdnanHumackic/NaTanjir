@@ -21,7 +21,7 @@ namespace http.Endpoint.GeneratorPodataka
             data.Add("Kupac", _applicationDbContext.Kupac.Count());
             data.Add("Admin", _applicationDbContext.Admin.Count());
             data.Add("Vlasnik", _applicationDbContext.Vlasnik.Count());
-
+            data.Add("Kategorija", _applicationDbContext.KategorijaProizvoda.Count());
             return Ok(data);
         }
 
@@ -31,7 +31,8 @@ namespace http.Endpoint.GeneratorPodataka
             var kupac = new List<Data.Models.Kupac>();
             var admin = new List<Data.Models.Admin>();
             var vlasnik = new List<Data.Models.Vlasnik>();
-
+            var kategorija = new List<Data.Models.KategorijaProizvoda>();
+            
             kupac.Add(new Data.Models.Kupac
             {
                 Is2FActive = false,
@@ -69,9 +70,23 @@ namespace http.Endpoint.GeneratorPodataka
                 BrojTelefona = "061-123-321",
                 Email = "vlasnik@tester.com"
             });
+            kategorija.Add(new Data.Models.KategorijaProizvoda
+            {
+                NazivKategorije = "Sendvić"
+            });
+
+            kategorija.Add(new Data.Models.KategorijaProizvoda
+            {
+                NazivKategorije = "Kolač"
+            });
+            kategorija.Add(new Data.Models.KategorijaProizvoda
+            {
+                NazivKategorije = "Pizza"
+            });
             _applicationDbContext.AddRange(admin);
             _applicationDbContext.AddRange(kupac);
             _applicationDbContext.AddRange(vlasnik);
+            _applicationDbContext.AddRange(kategorija);
             _applicationDbContext.SaveChanges();
 
             return Count();

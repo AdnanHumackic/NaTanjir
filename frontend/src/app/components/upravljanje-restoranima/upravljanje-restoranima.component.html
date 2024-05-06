@@ -16,7 +16,7 @@
           <div class="btn-group d-flex justify-content-center">
             <button class="btn btn-success fa fa-user" title="Dodaj radnika" (click)="dodajRadnika(rest.id, rest.naziv)"></button>
             <button class="btn btn-success fa fa-edit" title="Uredi podatke o restoranu" (click)="updateRestoran(rest)"></button>
-            <button class="btn btn-success fa fa-cutlery" title="Dodaj hranu za restoran"></button>
+            <button class="btn btn-success fa fa-cutlery" title="Dodaj hranu za restoran" (click)="dodajProizvod(rest.id, rest.naziv)"></button>
           </div>
         </div>
       </div>
@@ -30,3 +30,4 @@
 </html>
 <app-dodavanje-radnika [dodajRadnika]="odabraniRestoran"></app-dodavanje-radnika>
 <app-update-restoran [updateRestoran]="odabraniRestoranUpdate" (zatvaranjeModala)="this.refreshTimestamp=Date.now();this.fetchRestorani()"></app-update-restoran>
+<app-dodavanje-proizvoda [dodajProizvod]="odabraniRestoranProizvod"></app-dodavanje-proizvoda>

@@ -24,7 +24,7 @@ namespace http.Endpoint.Vlasnik.UpdateRestoran
             {
                 throw new Exception("Nije pronađen restoran za ID: " + request.ID);
             }
-
+            string folderPath = "slike-restorana";
             restoran.ID = request.ID;
             restoran.Naziv = request.Naziv;
             restoran.Opis = request.Opis;
@@ -32,7 +32,7 @@ namespace http.Endpoint.Vlasnik.UpdateRestoran
             restoran.RadnoVrijemeDo = request.RadnoVrijemeDo;
             restoran.Lokacija = request.Lokacija;
             restoran.SlikaRestorana = request.SlikaRestorana != null 
-                ? SlikaHelper.SacuvajSlike(request.SlikaRestorana, request.ID)
+                ? SlikaHelper.UpdateImage(request.SlikaRestorana, request.ID, folderPath)
                 : null;
             await _applicationDbContext.SaveChangesAsync(cancellationToken);
 

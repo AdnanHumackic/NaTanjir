@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using http.Data.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace http.Data.Models
+namespace http.Endpoint.Vlasnik.DodajHranu
 {
-    public class Proizvod
+    public class DodajProizvodRequest
     {
         public int ID { get; set; }
         public string NazivProizvoda { get; set; }
@@ -12,14 +13,8 @@ namespace http.Data.Models
         public string VrijemePripreme { get; set; }
         public string? SlikaProizvoda { get; set; }
 
-        [ForeignKey(nameof(KategorijaProizvoda))]
-        public int KategorijaID { get;set; }
-        public KategorijaProizvoda KategorijaProizvoda { get; set; }
+        public int KategorijaID { get; set; }
 
-        [ForeignKey(nameof(Restoran))]
         public int RestoranID { get; set; }
-        public Restoran Restoran { get; set; }
-
-
     }
 }

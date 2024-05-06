@@ -10,6 +10,7 @@ import {MojConfig} from "../../moj-config";
 import {DodavanjeRadnikaComponent} from "../dodavanje-radnika/dodavanje-radnika.component";
 import {UpdateRestoranComponent} from "../update-restoran/update-restoran.component";
 import {timestamp} from "rxjs";
+import {DodavanjeProizvodaComponent} from "../dodavanje-proizvoda/dodavanje-proizvoda.component";
 
 @Component({
   selector: 'app-upravljanje-restoranima',
@@ -18,7 +19,8 @@ import {timestamp} from "rxjs";
     VlasnikPanelNavbarComponent,
     NgForOf,
     DodavanjeRadnikaComponent,
-    UpdateRestoranComponent
+    UpdateRestoranComponent,
+    DodavanjeProizvodaComponent
   ],
   templateUrl: './upravljanje-restoranima.component.html',
   styleUrl: './upravljanje-restoranima.component.css'
@@ -29,6 +31,8 @@ export class UpravljanjeRestoranimaComponent implements OnInit{
   restoran:RestoranGetByIDVlasnikRestoran[]=[];
   odabraniRestoran:any=null;
   odabraniRestoranUpdate:any=null;
+  odabraniRestoranProizvod:any=null;
+
   protected readonly timestamp = timestamp;
   protected readonly Date = Date;
   refreshTimestamp: number = Date.now();
@@ -58,5 +62,7 @@ export class UpravljanjeRestoranimaComponent implements OnInit{
   }
 
 
-
+  dodajProizvod(id: number, naziv: string) {
+    this.odabraniRestoranProizvod={id, naziv};
+  }
 }

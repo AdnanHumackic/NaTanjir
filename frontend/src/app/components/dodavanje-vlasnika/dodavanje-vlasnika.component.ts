@@ -29,8 +29,8 @@ export class DodavanjeVlasnikaComponent {
   }
 
   dodavanjeVlasnikaForm = new FormGroup({
-    ime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
-    prezime: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][a-z]*$/)]),
+    ime: new FormControl('', [Validators.required, Validators.pattern(/^([A-Z][a-z]*\s?)+$/)]),
+    prezime: new FormControl('', [Validators.required, Validators.pattern(/^([A-Z][a-z]*\s?)+$/)]),
     korisnickoIme: new FormControl('', [Validators.required, Validators.minLength(5)]),
     lozinka: new FormControl('', [Validators.required, Validators.minLength(10),   Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_]).{10,}$/)]),
     datumRodjenja: new FormControl('', [Validators.required, this.datumValidator]),

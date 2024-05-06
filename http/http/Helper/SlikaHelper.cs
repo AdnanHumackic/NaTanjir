@@ -2,7 +2,7 @@
 {
     public static class SlikaHelper
     {
-        public static string SacuvajSlike(string slika, int id)
+        public static string UpdateImage(string slika, int id, string folder)
         {
             if (string.IsNullOrEmpty(slika))
                 throw new Exception("Slika nije pronađena.");
@@ -19,7 +19,7 @@
             if (slikaBajtoviResizedMala == null)
                 throw new Exception("Pogrešan format slike.");
 
-            string folderPath = "slike-restorana";
+            string folderPath = folder;
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
