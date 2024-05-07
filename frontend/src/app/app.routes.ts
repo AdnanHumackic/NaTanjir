@@ -7,6 +7,7 @@ import {DodajRestoranEndpoint} from "./endpoints/admin-endpoints/dodaj-restoran.
 import {DodavanjeRestoranaComponent} from "./components/dodavanje-restorana/dodavanje-restorana.component";
 import {UpravljanjeRestoranimaComponent} from "./components/upravljanje-restoranima/upravljanje-restoranima.component";
 import {RegistrationPageComponent} from "./components/registration-page/registration-page.component";
+import {PregledRestoranaComponent} from "./components/pregled-restorana/pregled-restorana.component";
 
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
   {path: 'adminPanel/dodavanjeVlasnikaRestorana', component: DodavanjeVlasnikaComponent},
   {path: 'adminPanel/dodavanjeRestorana', component: DodavanjeRestoranaComponent},
   {path: 'vlasnikPanel/upravljanjeRestoranima/:id', component: UpravljanjeRestoranimaComponent},
+  {path: 'pregledRestorana', component: PregledRestoranaComponent},
 
 ];

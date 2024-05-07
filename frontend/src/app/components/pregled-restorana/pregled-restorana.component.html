@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 15px;">
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let rest of restorani">
+      <div class="card shadow-sm">
+        <img class="card-img-top" src="{{MojConfig.adresa_servera}}/Restoran/SlikaByID?id={{rest.id}}&timestamp={{refreshTimestamp}}}" alt="Slika restorana">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{rest.naziv}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

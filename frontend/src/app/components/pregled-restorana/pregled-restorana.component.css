@@ -1,0 +1,21 @@
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.restaurant-card {
+  width: calc(30% - 20px);
+  margin: 10px;
+  height: 250px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.card-img-top {
+  max-height: 130px;
+  object-fit: cover;
+}
+.card:hover {
+  filter: brightness(96%);
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
